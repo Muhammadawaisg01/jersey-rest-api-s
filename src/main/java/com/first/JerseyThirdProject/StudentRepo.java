@@ -41,10 +41,50 @@ public class StudentRepo {
 	return null;
 	}
 	
+	static Student createStudent(Student s ) {
+		students.add(s) ;
+		
+		return s;
+	}
+	
 
 	@Override
 	public String toString() {
 		return "StudentRepo [students=" + students + "]";
+	}
+
+	public static boolean deleteStudent(int rollno) {
+		// TODO Auto-generated method stub
+		
+		Student s = getStudent(rollno); 
+		
+		return students.remove(s) ;
+			
+	}
+
+	public static String deleteAllStudent() {
+		// TODO Auto-generated method stub
+		
+		students = new ArrayList<Student>();
+		return "Deleted Successfully";
+	}
+
+	public static boolean updateStudent(Student s ) {
+		// TODO Auto-generated method stub
+		
+		Student student = getStudent(s.getRollno()); 
+		
+		if(student != null) {
+			student.setName(s.getName()); 
+			student.setMarks(s.getMarks());
+			student.setCourse(s.getCourse());
+			student.setUniversity(s.getUniversity());
+			return true;
+		}
+		else {
+			students.add(s);
+			return false;
+		}
 	}
 	
 	
